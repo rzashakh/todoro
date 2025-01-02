@@ -1,11 +1,13 @@
 package main
 
-import "net/http"
+import (
+	"github.com/rzashakh/todoro/routes"
+	"log"
+	"net/http"
+)
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { //What does w mean?
-		w.Write([]byte("Hello, World!"))
-		//Why Write uses byte slice instead of string?
-	})
-	http.ListenAndServe(":8080", nil)
+	router := routes.SetupRoutes() // Updated function call
+	log.Println("Server starting on http://localhost:8080")
+	log.Fatal(http.ListenAndServe(":8080", router)) // Start the server
 }
