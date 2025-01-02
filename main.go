@@ -1,13 +1,15 @@
 package main
 
 import (
-	"github.com/rzashakh/todoro/routes"
 	"log"
 	"net/http"
+
+	"github.com/rzashakh/todoro/routes"
 )
 
 func main() {
-	router := routes.SetupRoutes() // Updated function call
+	router := routes.SetupRoutes()
 	log.Println("Server starting on http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", router)) // Start the server
+	log.Fatal(http.ListenAndServe(":8080", router))
+
 }

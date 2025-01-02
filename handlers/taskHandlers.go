@@ -12,6 +12,11 @@ import (
 
 var tasks = storage.InitMemoryStore()
 
+// Function to handle GET request to /todos
+func MainPage(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "static/index.html")
+}
+
 func GetTasks(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(tasks.GetAll())
